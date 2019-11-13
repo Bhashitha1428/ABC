@@ -373,7 +373,7 @@ router.get('/:userId', userController.checkUserIfExist, (req, res, next) => {
 });
 
 
-//edit user account details with password***
+//edit user  password***
 //check password of a loged user before edit his profile and Edit user profile
 router.put('/editUserProfile/:userId', (req, res, next) => {
     console.log("User profile edit route");
