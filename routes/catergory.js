@@ -16,7 +16,7 @@ router.post('/addCatergory',(req,res,next)=>{
                       console.log(result.name)
                     res.status(200).json({
                         
-                        Message:" That Catergory name is already exist"
+                        msg:" That Catergory name is already exist"
                     });
 
                   }
@@ -32,13 +32,13 @@ router.post('/addCatergory',(req,res,next)=>{
                   res.status(200).json({
                    CatergoryName:result.name,
                    state:true,
-                   Message:" Added  Catergory Sucessful"
+                   msg:" Added  Catergory Sucessful"
                });
            })
            .catch(err=>{
              res.status(200).json({
                  state:false,
-                 Message:" Added  Catergory Fail",
+                 msg:" Added  Catergory Fail",
                  Error:err,
                  
              });
@@ -81,9 +81,9 @@ router.get('/display',(req,res)=>{
 
  //delete  Catergory
 
- router.delete('/delete/:subCatergoryName',(req,res)=>{
+ router.delete('/delete/:catergoryName',(req,res)=>{
      
-    const CName=req.params.subCatergoryName
+    const CName=req.params.catergoryName
    catergory
      .findOne({name:CName})
      .then(result=>{

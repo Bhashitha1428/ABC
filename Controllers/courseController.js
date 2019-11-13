@@ -51,7 +51,7 @@ function checkUserAlreadyRegisterd(req,res,next){
                  const a=typeof(user);
                  console.log(user.length);
                  //console.log(a);
-            return  res.status({
+            return  res.json({
                   state:false,
                    msg:"Already User Register this Course"
                 
@@ -170,7 +170,8 @@ function saveCourse(req,res){
             videoId:req.body.videoId,
           //************* */
             firstVideoId:req.body.firstVideoId,
-            authorId:req.body.authorId
+            authorId:req.body.authorId,
+            duration:req.body.duration
             
         });
         

@@ -78,7 +78,7 @@ function getUserById (id, callback){
             return res.status(409).json({
                 state: false,
                 exist: true,
-                Message:"use exist"
+                msg:"user exist"
             });
         
         } else {
@@ -100,7 +100,7 @@ function getUserById (id, callback){
                                 res.status(201).json({
                                 state: true,
                                 exist: false,
-                                Message:"User Register Sucessful",
+                                msg:"User Register Sucessful",
                             
                             });
                            
@@ -110,7 +110,7 @@ function getUserById (id, callback){
                             res.status(500).json({
                                 error: err,
                                 state: false,
-                                Message: "Some Validation Errors"
+                                msg: "Some Validation Errors"
                             });
                         });
                 }
@@ -142,7 +142,7 @@ User
         return res.status(409).json({
             state: false,
             exist: true,
-            Message:"use exist"
+            msg:"user exist"
         });
     
     } else {
@@ -165,7 +165,7 @@ User
                             res.status(201).json({
                             state: true,
                             exist: false,
-                            Message:"User Register Sucessful",
+                            msg:"User Register Sucessful",
                         
                         });
                        
@@ -175,7 +175,7 @@ User
                         res.status(500).json({
                             error: err,
                             state: false,
-                            Message: "Some Validation Errors"
+                            msg: "Some Validation Errors"
                         });
                     });
             }

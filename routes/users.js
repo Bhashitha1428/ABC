@@ -42,7 +42,8 @@ router.post('/uploadUserImage/:userId', uploadController.userImageUpload.single(
                     .save()
                     .then(result => {
                         res.status(200).json({
-                            state: true
+                            state: true,
+                            msg:"image upload sucessfull"
                         }) 
                     })
             });
@@ -408,7 +409,8 @@ router.put('/editUserProfile/:userId', (req, res, next) => {
                             .then(result=>{
                                 res.status(200).json({
                                     state:true,
-                                    user:result
+                                    user:result,
+                                    msg:"Change Password sucessful"
                                 })
 
                             })
@@ -429,7 +431,7 @@ router.put('/editUserProfile/:userId', (req, res, next) => {
                    // console.log("PPPPPPPPP");
                     res.status(500).json({
                         state: false,
-                        msg:"incorrect password"
+                        msg:"incorrect current password"
 
                        
                     })
@@ -463,7 +465,8 @@ router.put('/update/:id', (req, res) => {
              if(result){
                  res.json({
                   result:result,
-                  state:true   
+                  state:true ,
+                  msg:"Sucessfuly Updated user profille"  
                 });
              }
          })
@@ -516,7 +519,7 @@ router.delete('/delete/:id',checkAuth.checkIfAdminOrSuperAdmin,(req,res)=>{
               
                    if(!user){
                     res.status(500).json({
-                       Message:"User is not found" ,
+                       msg:"User is not found" ,
                        state:false
                       
                      })
@@ -529,7 +532,7 @@ router.delete('/delete/:id',checkAuth.checkIfAdminOrSuperAdmin,(req,res)=>{
                                     res.status(200).json({
                                       user:user,
                                       state:true,
-                                      Message:"User was deleted"
+                                      msg:"User was deleted"
                 
                                  })
                                      }) 
@@ -565,7 +568,7 @@ router.delete('/delete/:id',checkAuth.checkIfAdminOrSuperAdmin,(req,res)=>{
           
                if(!user){
                 res.status(500).json({
-                   Message:"User is not found" ,
+                   msg:"User is not found" ,
                    state:false
                   
                  })
@@ -585,7 +588,7 @@ router.delete('/delete/:id',checkAuth.checkIfAdminOrSuperAdmin,(req,res)=>{
                                 res.status(200).json({
                                   user:user,
                                   state:true,
-                                  Message:"User was deleted"
+                                  msg:"User was deleted"
             
                              })
                                  }) 
@@ -667,16 +670,17 @@ router.get('/newPassword/:email', (req, res, next) => {
     userEmail = req.params.email;
     console.log(userEmail)
     User
-        .find({ email: userEmail })
+        .findOne({ email: userEmail })
         .exec()
         .then(user => {  
-            
+            console.log(user);
             if(user){
                // console.log(user);
-                console.log(user[0]._id)
+                //console.log(user[0]._id)
+                console.log(user._id);
                 const newPassword = userController.generateRandomPassword()
                 console.log(newPassword);
-                userController.resetPassword(user[0]._id, newPassword)
+                userController.resetPassword(user._id, newPassword)
                 emailController.sendNewPassword(userEmail, newPassword);
                     res.status(200).json({
                         state: true,

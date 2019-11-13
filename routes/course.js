@@ -432,7 +432,11 @@ router.put('/update/:id', async (req, res) => {
     })
     .exec()
     .then(course=>{
-      res.json(course)
+      res.json({
+        state:true,
+        course:course,
+        msg:"Successfully updated"
+      })
      
    
     })
@@ -508,7 +512,7 @@ router.put('/givePermissionOrNot/:id', async (req, res) => {
   //[auth,authrole]
   //checkAuth.checkIfAdmin
   
-router.delete('/delete/:id',checkAuth.checkIfAdmin,(req,res)=>{
+router.delete('/delete/:id',checkAuth.checkIfSuperAdmin,(req,res)=>{
   console.log(" In course delete Route");
 const deleteCourseId=req.params.id;
 
@@ -519,7 +523,7 @@ courseSchema
             
                  if(!course){
                   res.status(500).json({
-                     Message:"Course is not found" ,
+                     msg:"Course is not found" ,
                      state:false
                     
                    })
@@ -532,7 +536,7 @@ courseSchema
                                   res.status(200).json({
                                     course:course,
                                     state:true,
-                                    Message:"Course was deleted"
+                                    msg:"Course was deleted"
               
                                })
                                    }) 
@@ -541,7 +545,7 @@ courseSchema
                .catch(err=>{
                  res.status(500).json({
                       state:false,
-                      Message:err
+                      msg:err
 
                  })
                })
@@ -617,7 +621,7 @@ courseSchema
                 if(!course){
                   res.status(200).json({
                     state:false,
-                    Message:"Course not exit yet"
+                    msg:"Course not exit yet"
                   })
                 }else{
               // update user Schema
@@ -647,7 +651,7 @@ courseSchema
               .catch(err=>{
                 res.status(500).json({
                   state:false,
-                  Message:"Errrrrrr"
+                  msg:"Errrrrrr"
 
              })
               })
@@ -765,7 +769,8 @@ courseSchema
              })
              .catch(err=>{
                res.json({
-                 err:"Handled Error"+err
+                 err:"Handled Error"+err,
+                 msg:"Rated un successful some error occure"
                })
              
                } )
