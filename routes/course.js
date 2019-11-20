@@ -47,7 +47,7 @@ const upload=multer({storage:storage,
 
 //Searching function
 router.get('/search/:value',(req,res)=>{
-  
+  console.log("AAAAAa")
 
   const value=req.params.value;
   const value2=value.toLowerCase();
@@ -63,7 +63,7 @@ router.get('/search/:value',(req,res)=>{
         // console.log(c.name);
          const title=(c.name).toLowerCase();
          //console.log(c.name)
-         if(title.indexOf(value2)>=0){
+         if(title.search(value2)>=0){
           arr.push(c);
           console.log(c.name)
          }

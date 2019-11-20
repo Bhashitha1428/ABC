@@ -245,6 +245,7 @@ function generateRandomPassword(req, res, next) {
 
 //change password
 function resetPassword(userId, newPassword){
+    console.log(newPassword);
     bcrypt.hash(newPassword, 10, (err, hash) => {
         if(err){
             console.log(err)

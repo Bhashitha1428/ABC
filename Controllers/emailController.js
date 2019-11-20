@@ -9,7 +9,7 @@ function sendVerificationCode(receiver, verificationCode) {
         service: 'gmail',
         auth: {
             user: 'webis1996@gmail.com',
-            pass: 'Webis@1996#1995'
+            pass: '1995#Webis@1996'
         }
     });
 
@@ -46,7 +46,7 @@ function sendNewPassword(receiver, newpassword) {
         
         auth: {
             user: 'webis1996@gmail.com',
-            pass: 'Webis@1996#1995'
+            pass: '1995#Webis@1996'
         },
        
     });

@@ -391,14 +391,17 @@ router.put('/editUserProfile/:userId', (req, res, next) => {
             console.log(savedPassword);
             bcrypt.compare(currentPassword,savedPassword, (err, result) => {
                 if(result){
-                        // console.log("LLLLLLLL")
+                       // console.log("LLLLLLLL")
                     bcrypt.hash(req.body.newPassword, 10, (err, hash) => {
                         if(err){
-                            return res.status(500).json({     
+                           // console.log("AAAaaaaaaa")
+                            return res.status(500).json({   
+                                
+                               
                             });
                         }else {
                             
-                          //  console.log("KKKKKKKKK");
+                           // console.log("KKKKKKKKK");
                             User.update({_id:userId},{
                                 $set:{
                                 //    fname: req.body.fname ,
@@ -415,6 +418,7 @@ router.put('/editUserProfile/:userId', (req, res, next) => {
 
                             })
                             .catch(err=>{
+                              //  console.log("KKKKKKKKKss");
                                 res.json(err);
                             })
                                
@@ -428,8 +432,8 @@ router.put('/editUserProfile/:userId', (req, res, next) => {
 
                    
                  else {
-                   // console.log("PPPPPPPPP");
-                    res.status(500).json({
+                    console.log("PPPPPPPPP");
+                    res.status(200).json({
                         state: false,
                         msg:"incorrect current password"
 
