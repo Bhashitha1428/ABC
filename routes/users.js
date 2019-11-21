@@ -68,7 +68,7 @@ router.post('/authenticate', (req, res, next)=> {
     userController.getUserByEmail(email,role, (err, user) => {
         if(err) throw err;
         if(!user){
-            return res.json({success: false, msg: 'User not found'});
+            return res.json({success: false, msg: 'User not found, incorrect email'});
         }
 
         userController.comparePassword(password, user.password, (err, isMatch) => {
@@ -95,7 +95,7 @@ router.post('/authenticate', (req, res, next)=> {
                   }
               });
           }else{
-              return res.json({success: false, msg: 'worng password'})
+              return res.json({success: false, msg: 'Incorrect password'})
           }
         });
     });

@@ -642,7 +642,8 @@ courseSchema
                 .then(result=>{
                   res.status(200).json({
                     course:result,
-                    state:true
+                    state:true,
+                    msg:"Registration successful"
                   })
                 })
               }

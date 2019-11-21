@@ -78,7 +78,7 @@ function getUserById (id, callback){
             return res.status(200).json({
                 state: false,
                 exist: true,
-                msg:"user exist"
+                msg:"The Email is already taken, use another email "
             });
         
         } else {
