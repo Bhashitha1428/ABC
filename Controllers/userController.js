@@ -75,7 +75,7 @@ function getUserById (id, callback){
         
         if(user.length >= 1){
             console.log('user exist');
-            return res.status(409).json({
+            return res.status(200).json({
                 state: false,
                 exist: true,
                 msg:"user exist"
