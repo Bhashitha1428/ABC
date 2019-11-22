@@ -68,7 +68,7 @@ router.post('/authenticate', (req, res, next)=> {
     userController.getUserByEmail(email,role, (err, user) => {
         if(err) throw err;
         if(!user){
-            return res.json({success: false, msg: 'User not found, incorrect email'});
+            return res.json({success: false, msg: 'User not found, Incorrect email address'});
         }
 
         userController.comparePassword(password, user.password, (err, isMatch) => {
@@ -115,7 +115,7 @@ router.post('/adminUserAuthenticate', (req, res, next)=> {
     userController.getUserByEmail(email,role, (err, user) => {
         if(err) throw err;
         if(!user){
-            return res.json({success: false, msg: 'User not found'});
+            return res.json({success: false, msg: 'User not found, Incorrect email address'});
         }
 
         userController.comparePassword(password, user.password, (err, isMatch) => {
@@ -142,7 +142,7 @@ router.post('/adminUserAuthenticate', (req, res, next)=> {
                   }
               });
           }else{
-              return res.json({success: false, msg: 'worng password'})
+              return res.json({success: false, msg: 'Incorrect password'})
           }
         });
     });
@@ -691,6 +691,12 @@ router.get('/newPassword/:email', (req, res, next) => {
                         password: newPassword,
                         msg:"Check your emails"
                     })
+            }else{
+                res.json({
+                    // error: err,
+                     state: false,
+                     msg:"Not a valid email"
+                 })
             }
         })
         .catch(err => {
@@ -698,7 +704,7 @@ router.get('/newPassword/:email', (req, res, next) => {
             res.json({
                // error: err,
                 state: false,
-                msg:"Not a valid email"
+                //msg:"Not a valid email"
             })
         })
 })

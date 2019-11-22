@@ -232,7 +232,9 @@ router.put('/updateSubCatergory/:id', async (req, res) => {
     .then(subCatergory=>{
       res.status(200).json({
          subCatergory:subCatergory,
-         state:true 
+         state:true ,
+         msg:"Sub Catergory update successful"
+
       })
      
    

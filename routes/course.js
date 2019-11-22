@@ -246,7 +246,7 @@ router.get('/highRated',(req,res)=>{
     courseSchema
         
           .find({
-           rate: {$gt:4.5 }
+           rate: {$gt:3.9 }
           })
           .exec()
           .then(course=>{
